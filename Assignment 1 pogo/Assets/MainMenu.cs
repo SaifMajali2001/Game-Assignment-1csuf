@@ -8,8 +8,6 @@ public class MainMenu : MonoBehaviour
     {
       SceneManager.LoadScene("Gameplay");  
     }
-
-    // Update is called once per frame
     public void Exit()
     {
         Debug.Log("Game is exiting...");
