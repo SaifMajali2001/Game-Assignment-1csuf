@@ -8,29 +8,28 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
-    private Rigidbody rb;
+    private Rigidbody2D rb;  // Changed to Rigidbody2D
     private bool isGrounded;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();  // Changed to Rigidbody2D
     }
 
-    // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        // Changed to 2D physics check
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundMask);
 
         float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        // Removed moveZ since 2D games typically only move left/right
 
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        Vector3 newVelocity = new Vector3(move.x * moveSpeed, rb.linearVelocity.y, move.z * moveSpeed);
+        Vector2 newVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
         rb.linearVelocity = newVelocity;
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);  // Changed to Vector2 and ForceMode2D
         }
     }
 }
