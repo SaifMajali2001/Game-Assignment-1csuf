@@ -606,9 +606,9 @@ GameObject:
   m_Component:
   - component: {fileID: 610464750}
   - component: {fileID: 610464749}
-  - component: {fileID: 610464751}
   - component: {fileID: 610464752}
   - component: {fileID: 610464753}
+  - component: {fileID: 610464754}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -660,8 +660,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.27470946, g: 0.82641506, b: 0.21050186, a: 1}
+  m_Sprite: {fileID: -7415976185928812845, guid: b67f6fd5ea9098a4eac2c77cf3f1b3c0, type: 3}
+  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -681,50 +681,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: 2.24, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 12.44, y: 12.44, z: 12.44}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2066587512}
   - {fileID: 1923717474}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &610464751
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610464748}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!50 &610464752
 Rigidbody2D:
   serializedVersion: 5
@@ -771,12 +734,61 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  attackRange: 1.1
+  attackRange: 0.88
   pogoForce: 8
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
   attackPoint: {fileID: 1923717474}
+  attackCooldown: 0.5
+  animator: {fileID: 0}
+  attackEffectPrefab: {fileID: 6433530353317708329, guid: 29038162c764a8246a62a48b87a35476, type: 3}
+--- !u!61 &610464754
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610464748}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.14, y: 0.18}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.14, y: 0.18}
+  m_EdgeRadius: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,13 +1523,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923717473}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.87, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70756304, w: 0.7066503}
+  m_LocalPosition: {x: 0, y: -0.169, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 610464750}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.074}
 --- !u!4 &2066587512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3544392763550547074, guid: f8f0d282360464947a8b3578b84df73b, type: 3}
@@ -1541,7 +1553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3544392763550547074, guid: f8f0d282360464947a8b3578b84df73b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.991
+      value: -0.081
       objectReference: {fileID: 0}
     - target: {fileID: 3544392763550547074, guid: f8f0d282360464947a8b3578b84df73b, type: 3}
       propertyPath: m_LocalPosition.z

@@ -14,10 +14,20 @@ public class PlayerMovement : MonoBehaviour
     public float pogoForce = 8f;  // How much you bounce up after hitting an enemy
     public LayerMask enemyMask;   // What counts as an enemy
     public Transform attackPoint; // Position where the attack happens (below player)
+    public float attackCooldown = 0.5f; // Cooldown time between attacks
+    private float lastAttackTime = 0f;
+
+    [Header("Animation")]
+    public Animator animator;
+    public GameObject attackEffectPrefab;
 
     private Rigidbody2D rb;
     private bool isGrounded;
 
+    bool canAttack()
+    {
+        return Time.time >= lastAttackTime + attackCooldown;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Downward Attack (only when in air)
-        if (Input.GetKeyDown(KeyCode.S) && !isGrounded)
+        if (Input.GetKeyDown(KeyCode.S) && !isGrounded && canAttack())
         {
             PerformDownwardAttack();
         }
@@ -46,21 +56,24 @@ public class PlayerMovement : MonoBehaviour
 
     void PerformDownwardAttack()
     {
-        // Add downward force to make attack feel more impactful
+        lastAttackTime = Time.time;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, -jumpForce * 0.8f);
         
-        // Check for enemies below
+        if (attackEffectPrefab != null)
+        {
+            // Set the rotation to make it horizontal
+            Quaternion horizontalRotation = Quaternion.Euler(0, 0, -90);
+            GameObject effect = Instantiate(attackEffectPrefab, attackPoint.position, horizontalRotation);
+            Destroy(effect, 0.3f);
+        }
+        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
         
         foreach (Collider2D enemy in hitEnemies)
         {
-            // Damage the enemy (you'll implement this later)
             Debug.Log("Hit enemy: " + enemy.name);
-            
-            // Pogo bounce effect
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoForce);
-            
-            break; // Only hit one enemy per attack
+            break;
         }
     }
 
