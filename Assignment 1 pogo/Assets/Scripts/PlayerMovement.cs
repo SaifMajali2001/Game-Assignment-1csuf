@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public GameObject attackEffectPrefab;
 
+    [Header("better jump")]
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
     private Rigidbody2D rb;
     private bool isGrounded;
 
@@ -47,10 +51,25 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
+       
+        BetterJump();
+
         // Downward Attack (only when in air)
         if (Input.GetKeyDown(KeyCode.S) && !isGrounded && canAttack())
         {
             PerformDownwardAttack();
+        }
+        
+    }
+    void BetterJump()
+    {
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 

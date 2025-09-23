@@ -728,14 +728,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 7
+  jumpForce: 8
   groundCheck: {fileID: 2066587512}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 0.88
-  pogoForce: 8
+  pogoForce: 10
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
@@ -743,6 +743,8 @@ MonoBehaviour:
   attackCooldown: 0.5
   animator: {fileID: 0}
   attackEffectPrefab: {fileID: 6433530353317708329, guid: 29038162c764a8246a62a48b87a35476, type: 3}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
 --- !u!61 &610464754
 BoxCollider2D:
   m_ObjectHideFlags: 0
