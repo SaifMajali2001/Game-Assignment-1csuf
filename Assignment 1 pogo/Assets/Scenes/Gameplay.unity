@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 610464752}
   - component: {fileID: 610464753}
   - component: {fileID: 610464754}
+  - component: {fileID: 610464755}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -660,7 +661,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7481530734727737065, guid: c12331e05a193f342bab8f729b78e39a, type: 3}
+  m_Sprite: {fileID: 4961454250535864147, guid: da8fa86ceb7240445aa84884408bbfd2, type: 3}
   m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -681,7 +682,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0199, y: 2.2001, z: 0}
-  m_LocalScale: {x: 11.918764, y: 12.860472, z: 12.44}
+  m_LocalScale: {x: 11.4972, y: 12.4056, z: 12}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2066587512}
@@ -741,7 +742,7 @@ MonoBehaviour:
     m_Bits: 8
   attackPoint: {fileID: 1923717474}
   attackCooldown: 0.5
-  animator: {fileID: 0}
+  animator: {fileID: 610464755}
   attackEffectPrefab: {fileID: 6433530353317708329, guid: 29038162c764a8246a62a48b87a35476, type: 3}
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
@@ -783,7 +784,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.23, y: 0.19}
+    oldSize: {x: 0.23, y: 0.18}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -791,6 +792,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.14, y: 0.18}
   m_EdgeRadius: 0
+--- !u!95 &610464755
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610464748}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ec685181a45ad84fae7deec913acaa1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

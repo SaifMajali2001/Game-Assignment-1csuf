@@ -41,10 +41,13 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundDistance, groundMask);
 
+
         float moveX = Input.GetAxis("Horizontal");
 
         Vector2 newVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
         rb.linearVelocity = newVelocity;
+
+        UpdateAnimations(moveX);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -60,6 +63,29 @@ public class PlayerMovement : MonoBehaviour
             PerformDownwardAttack();
         }
         
+    }
+
+    void UpdateAnimations(float moveX)
+    {
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", Mathf.Abs(moveX));
+            animator.SetBool("IsGrounded", isGrounded);
+        }
+        if (!isGrounded && rb.linearVelocity.y > 0.1f)
+        {
+            animator.SetTrigger("Jump");
+        }
+        else if (!isGrounded && rb.linearVelocity.y < -0.1f)
+        {
+            animator.SetTrigger("Fall");
+        }
+
+        // Flip player sprite based on movement direction
+            if (moveX > 0.1f)
+                transform.localScale = new Vector3(12, 12, 12);
+            else if (moveX < -0.1f)
+                transform.localScale = new Vector3(-12, 12, 12);
     }
     void BetterJump()
     {
