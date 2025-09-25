@@ -83,9 +83,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Flip player sprite based on movement direction
             if (moveX > 0.1f)
-                transform.localScale = new Vector3(12, 12, 12);
+                transform.localScale = new Vector3(10, 10, 10);
             else if (moveX < -0.1f)
-                transform.localScale = new Vector3(-12, 12, 12);
+                transform.localScale = new Vector3(-10, 10, 10);
     }
     void BetterJump()
     {
